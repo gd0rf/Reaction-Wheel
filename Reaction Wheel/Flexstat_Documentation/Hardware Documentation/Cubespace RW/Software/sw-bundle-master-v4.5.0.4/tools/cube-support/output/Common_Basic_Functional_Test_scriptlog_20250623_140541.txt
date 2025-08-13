@@ -1,0 +1,11 @@
+2:05:41 PM | Test Script Start: Common Basic Functional Test (v1.0)
+2:05:41 PM | Selected CubeComponent: 
+2:05:41 PM | Selected Bootloader: CubeCommonBaseBootloader6
+2:05:41 PM | Selected comms interface: Serial Port - COM4
+2:05:42 PM | Exception occurred : CubeSpace.Comms.TctlmTimeoutException: TCTLM TIMEOUT: No reply within 1000ms (ID=128)
+   at CubeSpace.Comms.SerialPortCommsInterfaceThreaded.RequestTelemetry(ICubeComponent dest, TlmRequest tlmReq)
+   at CubeSpace.Comms.SerialPortCommsInterfaceThreaded.RequestTelemetry[Tlm](ICubeComponent dest)
+   at CubeSpace.Scripts.Script.RequestTelemetry[Tlm](ICubeComponent dest)
+   at CubeSpace.Scripts.Script.ExitBootloader()
+   at CubeSpace.Scripts.CommonBasicFunctionalTest.RunScript()
+   at CubeSpace.Scripts.Script.Run(BackgroundWorker worker)

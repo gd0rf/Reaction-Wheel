@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IsModule>false</IsModule>
+  <IsTypesModule>true</IsTypesModule>
+  <Name>cube-node-1-common-types-1</Name>
+  <CodeName>CubeNodeCommonTypes</CodeName>
+  <InterfaceVersion>1</InterfaceVersion>
+  <CanLog>false</CanLog>
+
+  <Enum>
+    <CodeName>Ports</CodeName>
+    <EnumValue NumericalValue="0" CodeName="Port1"          DisplayName="Port1"     Description="Port 1 handle" />
+    <EnumValue NumericalValue="1" CodeName="Port2"          DisplayName="Port2"     Description="Port 2 handle" />
+    <EnumValue NumericalValue="2" CodeName="Port3"          DisplayName="Port3"     Description="Port 3 handle" />
+    <EnumValue NumericalValue="3" CodeName="Port4"          DisplayName="Port4"     Description="Port 4 handle" />
+    <EnumValue NumericalValue="4" CodeName="PortMax"        DisplayName="PortMax"   Description="Number of ports" />
+  </Enum>
+  
+</NodeDefinition>

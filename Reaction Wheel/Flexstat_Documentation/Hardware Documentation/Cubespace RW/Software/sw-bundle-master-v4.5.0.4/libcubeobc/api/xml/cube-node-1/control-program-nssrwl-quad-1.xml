@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IsModule>false</IsModule>
+  <Name>cube-node-1-control-program-nssrwl-quad-1</Name>
+  <CodeName>CubeNodeControlProgramNssrwlQuad</CodeName>
+  <InterfaceVersion>1</InterfaceVersion>
+  <NodeTypeId2>274</NodeTypeId2> <!-- NodeTypeCubeNodeQuadNssrwl & ProgramTypeControl ~ See NodeType/ProgramType Enums in common-framework.xml -->
+  <NodeTypeIdMask2>65535</NodeTypeIdMask2> <!-- Match NodeType(0x00FF) & ProgramType(0xFF00) -->
+  <CanLog>false</CanLog>
+
+  <!-- ****************** NssRwl TC ****************** -->
+
+  <!-- ****************** NssRwl TLM ****************** -->
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlWheelSpeed2" DisplayName="Wheel Speed Port 2" Description="Wheel speed measurement from port 2" Len="4" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-Speed">
+    <Item CodeName="Speed"      DisplayName="Speed"  Description="NSSRWL measured wheel speed" BitOffset="0" BitLength="32" ValueType="Struct" StructName="RwlSpeed" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlWheelSpeed3" DisplayName="Wheel Speed Port 3" Description="Wheel speed measurement from port 3" Len="4" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-Speed">
+    <Item CodeName="Speed"      DisplayName="Speed"  Description="NSSRWL measured wheel speed" BitOffset="0" BitLength="32" ValueType="Struct" StructName="RwlSpeed" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlWheelSpeed4" DisplayName="Wheel Speed Port 4" Description="Wheel speed measurement from port 4" Len="4" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-Speed">
+    <Item CodeName="Speed"      DisplayName="Speed"  Description="NSSRWL measured wheel speed" BitOffset="0" BitLength="32" ValueType="Struct" StructName="RwlSpeed" Iterator="" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlTlmStandard2" DisplayName="Raw NSSRWL Standard TLM Port 2" Description="Get NSSRWL Standard TLM Packet from port 2" Len="23" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-Standard">
+    <Item CodeName="Tlm"        DisplayName="Standard Tlm"  Description="NSSRWL standard tlm" BitOffset="0" BitLength="184" ValueType="Struct" StructName="TlmStandard" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlTlmStandard3" DisplayName="Raw NSSRWL Standard TLM Port 3" Description="Get NSSRWL Standard TLM Packet from port 3" Len="23" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-Standard">
+    <Item CodeName="Tlm"        DisplayName="Standard Tlm"  Description="NSSRWL standard tlm" BitOffset="0" BitLength="184" ValueType="Struct" StructName="TlmStandard" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlTlmStandard4" DisplayName="Raw NSSRWL Standard TLM Port 4" Description="Get NSSRWL Standard TLM Packet from port 4" Len="23" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-Standard">
+    <Item CodeName="Tlm"        DisplayName="Standard Tlm"  Description="NSSRWL standard tlm" BitOffset="0" BitLength="184" ValueType="Struct" StructName="TlmStandard" Iterator="" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlTlmExtended2" DisplayName="Raw NSSRWL Extended TLM Port 2" Description="Get NSSRWL Extended TLM Packet from port 2" Len="5" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-Extended">
+    <Item CodeName="Tlm"        DisplayName="Extended Tlm"  Description="NSSRWL extended tlm" BitOffset="0" BitLength="40" ValueType="Struct" StructName="TlmExtended" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlTlmExtended3" DisplayName="Raw NSSRWL Extended TLM Port 3" Description="Get NSSRWL Extended TLM Packet from port 3" Len="5" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-Extended">
+    <Item CodeName="Tlm"        DisplayName="Extended Tlm"  Description="NSSRWL extended tlm" BitOffset="0" BitLength="40" ValueType="Struct" StructName="TlmExtended" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlTlmExtended4" DisplayName="Raw NSSRWL Extended TLM Port 4" Description="Get NSSRWL Extended TLM Packet from port 4" Len="5" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-Extended">
+    <Item CodeName="Tlm"        DisplayName="Extended Tlm"  Description="NSSRWL extended tlm" BitOffset="0" BitLength="40" ValueType="Struct" StructName="TlmExtended" Iterator="" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlTlmSystem2" DisplayName="Raw NSSRWL System TLM Port 2" Description="Get NSSRWL System TLM Packet from port 2" Len="23" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-System">
+    <Item CodeName="Tlm"        DisplayName="System Tlm"  Description="NSSRWL system tlm" BitOffset="0" BitLength="184" ValueType="Struct" StructName="TlmSystem" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlTlmSystem3" DisplayName="Raw NSSRWL System TLM Port 3" Description="Get NSSRWL System TLM Packet from port 3" Len="23" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-System">
+    <Item CodeName="Tlm"        DisplayName="System Tlm"  Description="NSSRWL system tlm" BitOffset="0" BitLength="184" ValueType="Struct" StructName="TlmSystem" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="NssRwlTlmSystem4" DisplayName="Raw NSSRWL System TLM Port 4" Description="Get NSSRWL System TLM Packet from port 4" Len="23" PartOfStartItem="0" PartOfNumItems="0" Group="NssRwlTLM-System">
+    <Item CodeName="Tlm"        DisplayName="System Tlm"  Description="NSSRWL system tlm" BitOffset="0" BitLength="184" ValueType="Struct" StructName="TlmSystem" Iterator="" />
+  </Ttcs>
+
+  <!-- ****************** ENUMERATIONS ****************** -->
+
+  <!-- !!! app-specific ID's should start from the mid-point (64 TC & 192 TLM) and should increment & decrement towards the common ID's !!! -->
+
+  <!-- TC -->
+
+  <!-- TLM -->
+  <TtcIds TtcName="NssRwlWheelSpeed2"             GetId="195" SetId="255" LogId="0" />
+  <TtcIds TtcName="NssRwlWheelSpeed3"             GetId="189" SetId="255" LogId="0" />
+  <TtcIds TtcName="NssRwlWheelSpeed4"             GetId="196" SetId="255" LogId="0" />
+  <TtcIds TtcName="NssRwlTlmStandard2"            GetId="197" SetId="255" LogId="0" />
+  <TtcIds TtcName="NssRwlTlmStandard3"            GetId="187" SetId="255" LogId="0" />
+  <TtcIds TtcName="NssRwlTlmStandard4"            GetId="198" SetId="255" LogId="0" />
+  <TtcIds TtcName="NssRwlTlmExtended2"            GetId="199" SetId="255" LogId="0" />
+  <TtcIds TtcName="NssRwlTlmExtended3"            GetId="185" SetId="255" LogId="0" />
+  <TtcIds TtcName="NssRwlTlmExtended4"            GetId="200" SetId="255" LogId="0" />
+  <TtcIds TtcName="NssRwlTlmSystem2"              GetId="201" SetId="255" LogId="0" />
+  <TtcIds TtcName="NssRwlTlmSystem3"              GetId="183" SetId="255" LogId="0" />
+  <TtcIds TtcName="NssRwlTlmSystem4"              GetId="202" SetId="255" LogId="0" />
+	
+  <!-- ****************** MODULES ****************** -->
+
+  <Modules>
+    <string>common-framework/common-framework-1.xml</string>
+    <string>cube-node-1/cube-node-common-1.xml</string>
+    <string>cube-node-1/control-program-nssrwl-common-1.xml</string>
+  </Modules>
+
+  <!-- ****************** TYPES MODULES ****************** -->
+	<TypesModules>
+    <string>common-framework/common-framework-types-1.xml</string>
+    <string>cube-node-1/cube-node-common-types-1.xml</string>
+    <string>cube-node-1/control-program-nssrwl-common-types-1.xml</string>
+	</TypesModules>
+
+</NodeDefinition>

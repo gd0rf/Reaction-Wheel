@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IsModule>false</IsModule>
+  <Name>cube-wheel-2-control-program-3</Name>
+  <CodeName>CubeWheelControlProgram</CodeName>
+  <InterfaceVersion>3</InterfaceVersion>
+  <NodeTypeId>19</NodeTypeId> <!-- NodeTypeCubeWheel & ProgramTypeControl ~ See NodeType/ProgramType Enums in common-framework.xml -->
+  <NodeTypeIdMask>255</NodeTypeIdMask> <!-- Match NodeType(0x0F) & ProgramType(0xF0) -->
+  <NodeTypeId2>259</NodeTypeId2> <!-- NodeTypeCubeWheel & ProgramTypeControl ~ See NodeType/ProgramType Enums in common-framework.xml -->
+  <NodeTypeIdMask2>65535</NodeTypeIdMask2> <!-- Match NodeType(0x00FF) & ProgramType(0xFF00) -->
+  <CanLog>false</CanLog>
+
+  <Ttcs CanSet="true" CanGet="true" CodeName="BackupGain" DisplayName="Backup Gain" Description="Backup speed controller gain values" Len="12" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="Kp" DisplayName="Kp" Description="Proportional gain" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="2.0" />
+    <Item CodeName="Ki" DisplayName="Ki" Description="Integrator gain" BitOffset="32" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="2.0" />
+    <Item CodeName="Kd" DisplayName="Kd" Description="Feedback gain" BitOffset="64" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="2.0" />
+  </Ttcs>
+  <Ttcs CanSet="true" CanGet="true" CodeName="BackupWheelMode" DisplayName="Backup Wheel Mode" Description="Set the back-up wheel mode" Len="1" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="BackupMode" DisplayName="BackupMode" Description="Enable the back-up mode" BitOffset="0" BitLength="1" ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+  <Ttcs CanSet="true" CanGet="false" CodeName="ClearErrors" DisplayName="Clear Errors" Description="Clear the processor error flags" Len="0" PartOfStartItem="0" PartOfNumItems="0" Group="">
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="ControlMode" DisplayName="Control Mode" Description="Get the motor control mode" Len="1" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="controlMode" DisplayName="Control Mode" Description="Control mode of motor" BitOffset="0" BitLength="8" ValueType="Enumeration" EnumerationName="ControlModeVal" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="Stator" DisplayName="Stator Data" Description="Data related to the motor stator windings" Len="8" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="Coilcurrent" DisplayName="Coil current" Description="Current applied to motor coils" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="mA" RangeMin="0" RangeMax="5000.0" />
+    <Item CodeName="Statortemp" DisplayName="Stator temperature" Description="Temperature of the coil windings" BitOffset="32" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="C" RangeMin="-100.0" RangeMax="200.0" />
+  </Ttcs>
+  <Ttcs CanSet="true" CanGet="true" CodeName="MainGain" DisplayName="Main Gain" Description="Main speed controller gain values" Len="12" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="Kp" DisplayName="Kp" Description="Proportional gain" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="2.0" />
+    <Item CodeName="Ki" DisplayName="Ki" Description="Integrator gain" BitOffset="32" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="2.0" />
+    <Item CodeName="Kd" DisplayName="Kd" Description="Feedback gain" BitOffset="64" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="2.0" />
+  </Ttcs>
+  <Ttcs CanSet="true" CanGet="true" CodeName="PWMGain" DisplayName="PWM Gain" Description="General PWM gain" Len="4" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="K" DisplayName="K" Description="Main gain" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="2.0" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="StatusErrorFlags" DisplayName="Status and Error Flags" Description="Processor status and error flags" Len="1" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="InvalidTelemetry" DisplayName="Invalid Telemetry" Description="An invalid telemetry request was received" BitOffset="0" BitLength="1" ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="InvalidTelecommand" DisplayName="Invalid Telecommand" Description="An invalid telecommand was received" BitOffset="1" BitLength="1" ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="EncoderError" DisplayName="Encoder Error" Description="Encoder indicates an error" BitOffset="2" BitLength="1" ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="UARTError" DisplayName="Uart Error" Description="Error in UART protocol" BitOffset="3" BitLength="1" ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="I2CError" DisplayName="I2C Error" Description="Error in I2C protocol" BitOffset="4" BitLength="1" ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="CANError" DisplayName="CAN Error" Description="Error in CAN protocol" BitOffset="5" BitLength="1" ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="ConfigError" DisplayName="Configuration Error" Description="Configuration load error" BitOffset="6" BitLength="1" ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="SpeedError" DisplayName="Speed Error" Description="Speed measurements indicates an error" BitOffset="7" BitLength="1" ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="HealthTlm" DisplayName="Health Telemetry" Description="Health telemetry for CubeWheel" Len="17" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="BatteryCurrent" DisplayName="Battery Current" Description="Battery current measurement" BitOffset="0" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="mA" RangeMin="0" RangeMax="500" />
+    <Item CodeName="BatteryVoltage" DisplayName="Battery Voltage" Description="Battery voltage measurement at input" BitOffset="16" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="mV" RangeMin="0" RangeMax="36000" />
+	  <Item CodeName="DriverVoltage" DisplayName="Driver Voltage" Description="Battery voltage measurement at driver" BitOffset="32" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="mV" RangeMin="0" RangeMax="25000" />
+    <Item CodeName="DigitalCurrent" DisplayName="Digital Current" Description="Total 3.3V Current" BitOffset="48" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="mA" RangeMin="0" RangeMax="100" />
+	  <Item CodeName="McuTemperature" DisplayName="MCU Temperature" Description="MCU temperature measurement" BitOffset="64" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="C" RangeMin="-50.0" RangeMax="120.0" />
+    <Item CodeName="WatchdogCount" DisplayName="Watchdog Counters"    Description="Bitmask representing virtual watchdog region warning counters." BitOffset="96"  BitLength="40" ValueType="ByteArray"   EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="WheelData" DisplayName="Wheel Data" Description="Complete wheel data" Len="15" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="WheelSpeed" DisplayName="Wheel Speed" Description="Wheel speed measurement in rpm" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="RPM" RangeMin="-10000" RangeMax="10000" />
+    <Item CodeName="WheelSpeedBackup" DisplayName="Wheel Backup Speed" Description="Wheel backup speed measurement in rpm" BitOffset="32" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="RPM" RangeMin="-10000" RangeMax="10000" />
+	<Item CodeName="WheelReference" DisplayName="Wheel Reference" Description="Wheel reference speed in rpm" BitOffset="64" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="RPM" RangeMin="-10000" RangeMax="10000" />
+    <Item CodeName="BatteryCurrent" DisplayName="Battery Current" Description="Battery current measurement" BitOffset="96" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="mA" RangeMin="0" RangeMax="0" />
+	<Item CodeName="WheelErrorState" DisplayName="Wheel Data Status" Description="Wheel data status" BitOffset="112" BitLength="8" ValueType="Enumeration" EnumerationName="WheelErrorState" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="WheelPosData" DisplayName="Wheel Position Data" Description="Complete wheel data" Len="15" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="WheelPosition"  DisplayName="Wheel Position" Description="Wheel positiion" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="Rotations" RangeMin="-200000000" RangeMax="2000000000" />
+    <Item CodeName="WheelSpeed"     DisplayName="Wheel Speed" Description="Wheel speed measurement in rpm" BitOffset="32" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="RPM" RangeMin="-10000" RangeMax="10000" />
+    <Item CodeName="WheelReference" DisplayName="Wheel Reference" Description="Wheel reference speed in rpm" BitOffset="64" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="RPM" RangeMin="-10000" RangeMax="10000" />
+    <Item CodeName="BatteryCurrent" DisplayName="Battery Current" Description="Battery current measurement" BitOffset="96" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="mA" RangeMin="0" RangeMax="0" />
+    <Item CodeName="WheelErrorState" DisplayName="Wheel Data Status" Description="Wheel data status" BitOffset="112" BitLength="8" ValueType="Enumeration" EnumerationName="WheelErrorState" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+  <!--
+  <Ttcs CanSet="false" CanGet="true" CodeName="WheelReference" DisplayName="Wheel Reference" Description="Wheel reference speed" Len="4" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="wheelReference" DisplayName="Wheel Reference" Description="Wheel reference speed in rpm" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="RPM" RangeMin="-10000" RangeMax="10000" />
+  </Ttcs>
+  -->
+  <Ttcs CanSet="false" CanGet="true" CodeName="WheelSpeed" DisplayName="Wheel Speed" Description="Wheel speed measurement" Len="5" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="wheelSpeed" DisplayName="Wheel Speed" Description="Wheel speed measurement in rpm" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="RPM" RangeMin="-10000" RangeMax="10000" />
+	<Item CodeName="WheelErrorState" DisplayName="Wheel Error State" Description="Wheel error state" BitOffset="32" BitLength="8" ValueType="Enumeration" EnumerationName="WheelErrorState" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+  <Ttcs CanSet="true" CanGet="true" CodeName="WheelSpeedRef" DisplayName="Wheel Reference Speed" Description="Set momentum wheel reference speed" Len="4" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="SpeedRef" DisplayName="Reference Speed" Description="Wheel reference speed" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="RPM" RangeMin="-10000" RangeMax="10000" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="WheelTorque" DisplayName="Wheel Torque" Description="Wheel Torque measurement" Len="5" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="wheelTorque" DisplayName="Wheel Torque" Description="Wheel Torque measurement in mNm" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="mNm" RangeMin="-50" RangeMax="50" />
+	<Item CodeName="WheelErrorState" DisplayName="Wheel Error State" Description="Wheel error state" BitOffset="32" BitLength="8" ValueType="Enumeration" EnumerationName="WheelErrorState" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+  <Ttcs CanSet="true" CanGet="true" CodeName="WheelTorqueRef" DisplayName="Wheel Reference Torque" Description="Set torque reference for wheel" Len="4" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="TorqueRef" DisplayName="Reference Torque" Description="Wheel reference Torque" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="mNm" RangeMin="-50" RangeMax="50" />
+  </Ttcs>
+
+   <Ttcs CanSet="true" CanGet="false" CodeName="WheelTravelRef" DisplayName="Wheel Reference Distance" Description="Drive rover for defined distance and max speed." Len="8" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="SpeedRef" DisplayName="Reference Speed" Description="Wheel reference speed" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="RPM" RangeMin="-10000" RangeMax="10000" />
+    <Item CodeName="DistanceRef" DisplayName="Reference Distance" Description="Wheel reference distance" BitOffset="32" BitLength="32" ValueType="SignedInteger" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="Rot" RangeMin="-2000000000" RangeMax="2000000000" />
+  </Ttcs>
+
+    <Ttcs CanSet="true" CanGet="true" CodeName="WheelRefRampRateLimit" DisplayName="Wheel Reference Speed Ramp Rate Limit" Description="Set ramp rate limit for wheel speed reference" Len="4" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="RampRateLimit" DisplayName="Ramp Rate Limit" Description="Maximum speed reference increment during 1ms period. This limits the max torque of the motor." BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="RPM/ms" RangeMin="0" RangeMax="10" />
+  </Ttcs>
+
+  <Ttcs CanSet="true" CanGet="true" CodeName="WheelDuty" DisplayName="Wheel Commanded Duty Cycle" Description="Set motor commanded PWM control signal" Len="4" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="DutyCycle" DisplayName="Duty Cycle" Description="Duty cycle of motor PWM control signal. The torque provided by the motor will be proportional to the PWM signal" BitOffset="0" BitLength="32" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="%" RangeMin="-100.0" RangeMax="100.0" />
+  </Ttcs>
+  <Ttcs CanSet="true" CanGet="true" CodeName="MotorPower" DisplayName="Motor Power" Description="Switch motor power on/off" Len="1" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="MotorPowerSwitch" DisplayName="Motor Power Switch" Description="Switch motor power switch on/off" BitOffset="0" BitLength="1" ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="WheelModel" DisplayName="Wheel Model" Description="Get the wheel model" Len="1" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="MotorWheelType" DisplayName="Wheel type" Description="The model type of the motor" BitOffset="0" BitLength="8" ValueType="Enumeration" EnumerationName="WheelTypeEnum" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+
+  <Enum>
+    <CodeName>ReadReference</CodeName>
+	<EnumValue NumericalValue="0" CodeName="First" DisplayName="First" Description="Reference from first entry" />
+	<EnumValue NumericalValue="1" CodeName="Last" DisplayName="Last" Description="Reference from last entry" />
+  </Enum>
+  <Enum>
+    <CodeName>ControlModeVal</CodeName>
+    <EnumValue NumericalValue="0" CodeName="NoControl" DisplayName="No Control" Description="No control mode" />
+    <EnumValue NumericalValue="1" CodeName="DutyCycleInput" DisplayName="Duty Cycle Input" Description="Duty cycle input mode" />
+    <EnumValue NumericalValue="2" CodeName="SpeedController" DisplayName="Speed Controller" Description="Speed controller mode" />
+    <EnumValue NumericalValue="3" CodeName="TorqueController" DisplayName="Torque Controller" Description="Torque controller mode" />
+  </Enum>
+  <Enum>
+    <CodeName>WheelErrorState</CodeName>
+    <EnumValue NumericalValue="0" CodeName="DataValid" DisplayName="Data Valid" Description="Data is valid" />
+    <EnumValue NumericalValue="1" CodeName="EncoderNoResponse" DisplayName="Encoder No Response" Description="No response from encoder" />
+    <EnumValue NumericalValue="2" CodeName="HallSensorEncoderMismatch" DisplayName="Hall Sensor Encoder Mismatch" Description="Mismatch between speed reported from hall sensors vs that of encoder" />
+    <EnumValue NumericalValue="3" CodeName="SpeedNotReachedTimeout" DisplayName="Speed Not Reached Timeout" Description="Speed setpoint not reached within allocated time period" />
+    <EnumValue NumericalValue="4" CodeName="MaxSpeedReached" DisplayName="Maximum Speed Limit Reached" Description="Speed setpoint at or near the software limit" />
+  </Enum>
+  <Enum>
+    <CodeName>WheelTypeEnum</CodeName>
+    <EnumValue NumericalValue="0" CodeName="CubeWheelGeneric" DisplayName="Generic Wheel" Description="Default Generic Wheel" />
+    <EnumValue NumericalValue="1" CodeName="CubeWheelCW0017" DisplayName="CubeWheel 0017" Description="Node is a CubeWheel 0017 type" />
+    <EnumValue NumericalValue="2" CodeName="CubeWheelCW0057" DisplayName="CubeWheel 0057" Description="Node is a CubeWheel 0057 type" />
+    <EnumValue NumericalValue="3" CodeName="CubeWheelCW0162" DisplayName="CubeWheel 0162" Description="Node is a CubeWheel 0162 type" />
+    <EnumValue NumericalValue="4" CodeName="CubeWheelCW0500" DisplayName="CubeWheel 0500" Description="Node is a CubeWheel 0500 type" />
+    <EnumValue NumericalValue="5" CodeName="CubeWheelCW1200" DisplayName="CubeWheel 1200" Description="Node is a CubeWheel 1200 type" />
+    <EnumValue NumericalValue="6" CodeName="CubeWheelCW2500" DisplayName="CubeWheel 2500" Description="Node is a CubeWheel 2500 type" />
+    <EnumValue NumericalValue="7" CodeName="CubeWheelCW5000" DisplayName="CubeWheel 5000" Description="Node is a CubeWheel 5000 type" />
+    <EnumValue NumericalValue="8" CodeName="CubeWheelRover1" DisplayName="CubeWheel Rover1" Description="Node is a CubeWheel Rover 1 type" />
+    <EnumValue NumericalValue="9" CodeName="CubeWheelCW10k"  DisplayName="CubeWheel 10k" Description="Node is a CubeWheel 10k type" />
+    <EnumValue NumericalValue="10" CodeName="CubeWheelCW40k" DisplayName="CubeWheel 40k" Description="Node is a CubeWheel 40k type" />
+  </Enum>
+
+  <!-- TC -->
+  <TtcIds TtcName="WheelSpeedRef" GetId="255" SetId="64" LogId="0" />
+  <TtcIds TtcName="WheelTorqueRef" GetId="186" SetId="63" LogId="0" />
+  <TtcIds TtcName="WheelTravelRef" GetId="255" SetId="69" LogId="0" />
+  <TtcIds TtcName="WheelRefRampRateLimit" GetId="200" SetId="70" LogId="0" />
+  <TtcIds TtcName="WheelDuty" GetId="255" SetId="65" LogId="0" />
+  <TtcIds TtcName="BackupWheelMode" GetId="255" SetId="66" LogId="0" />
+  <TtcIds TtcName="ClearErrors" GetId="255" SetId="62" LogId="0" />
+  <TtcIds TtcName="MainGain" GetId="255" SetId="67" LogId="0" />
+  <TtcIds TtcName="BackupGain" GetId="255" SetId="61" LogId="0" />
+  <TtcIds TtcName="PWMGain" GetId="255" SetId="68" LogId="0" />
+  <TtcIds TtcName="MotorPower" GetId="255" SetId="60" LogId="0" />
+
+  <!-- TLM -->
+  <TtcIds TtcName="Stator" GetId="199" SetId="255" LogId="0" />
+  <TtcIds TtcName="WheelTorque" GetId="185" SetId="255" LogId="0" />
+  <TtcIds TtcName="BackupGain" GetId="192" SetId="255" LogId="0" />
+  <TtcIds TtcName="MainGain" GetId="193" SetId="255" LogId="0" />
+  <TtcIds TtcName="PWMGain" GetId="191" SetId="255" LogId="0" />
+  <TtcIds TtcName="StatusErrorFlags" GetId="194" SetId="255" LogId="0" />
+  <TtcIds TtcName="WheelData" GetId="190" SetId="255" LogId="0" />
+  <TtcIds TtcName="WheelDuty" GetId="195" SetId="255" LogId="0" />
+  <TtcIds TtcName="HealthTlm" GetId="189" SetId="255" LogId="0" />
+  <TtcIds TtcName="WheelSpeedRef" GetId="196" SetId="255" LogId="0" />
+  <TtcIds TtcName="WheelSpeed" GetId="188" SetId="255" LogId="0" />
+  <TtcIds TtcName="MotorPower" GetId="197" SetId="255" LogId="0" />
+  <TtcIds TtcName="ControlMode" GetId="187" SetId="255" LogId="0" />
+  <TtcIds TtcName="BackupWheelMode" GetId="198" SetId="255" LogId="0" />
+  <TtcIds TtcName="WheelModel" GetId="184" SetId="255" LogId="0" />
+  <TtcIds TtcName="WheelPosData" GetId="183" SetId="255" LogId="0" />
+
+ <!-- ****************** MODULES ****************** -->
+
+  <Modules>
+		<string>common-framework/common-framework-1.xml</string>
+  </Modules>
+
+  <!-- ****************** TYPES MODULES ****************** -->
+	<TypesModules>
+    <string>common-framework/common-framework-types-1.xml</string>
+	</TypesModules>
+
+  <!-- ****************** END ****************** -->
+
+</NodeDefinition>

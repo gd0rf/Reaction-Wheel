@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IsModule>false</IsModule>
+  <Name>cube-node-1-control-program-pst3s-quad-1</Name>
+  <CodeName>CubeNodeControlProgramPst3sQuad</CodeName>
+  <InterfaceVersion>1</InterfaceVersion>
+  <NodeTypeId2>273</NodeTypeId2> <!-- NodeTypeCubeNodeQuadPst3s & ProgramTypeControl ~ See NodeType/ProgramType Enums in common-framework.xml -->
+  <NodeTypeIdMask2>65535</NodeTypeIdMask2> <!-- Match NodeType(0x00FF) & ProgramType(0xFF00) -->
+  <CanLog>false</CanLog>
+
+	<!-- ****************** StarTracker TC ****************** -->
+
+	<!-- ****************** StarTracker TLM ****************** -->
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sTlm2" DisplayName="PST3S RAW TLM Port 2" Description="Get PST3S TLM Packet from port 2. Triggers TLM Request" Len="63" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+    <Item CodeName="Tlm"        DisplayName="Raw Tlm"  Description="PST3S raw tlm" BitOffset="0" BitLength="504" ValueType="Struct" StructName="RawTlm" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sTlm3" DisplayName="PST3S RAW TLM Port 3" Description="Get PST3S TLM Packet from port 3. Triggers TLM Request" Len="63" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+    <Item CodeName="Tlm"        DisplayName="Raw Tlm"  Description="PST3S raw tlm" BitOffset="0" BitLength="504" ValueType="Struct" StructName="RawTlm" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sTlm4" DisplayName="PST3S RAW TLM Port 4" Description="Get PST3S TLM Packet from port 4. Triggers TLM Request" Len="63" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+    <Item CodeName="Tlm"        DisplayName="Raw Tlm"  Description="PST3S raw tlm" BitOffset="0" BitLength="504" ValueType="Struct" StructName="RawTlm" Iterator="" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sAttitude2" DisplayName="PST3S Attitude Data Port 2" Description="Get the Last Sampled PST3S Attitude Specific Data from port 2" Len="43" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+		<Item CodeName="Tlm"        DisplayName="Attitude Tlm"  Description="PST3S attitude tlm" BitOffset="0" BitLength="344" ValueType="Struct" StructName="AttitudeTlm" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sAttitude3" DisplayName="PST3S Attitude Data Port 3" Description="Get the Last Sampled PST3S Attitude Specific Data from port 3" Len="43" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+		<Item CodeName="Tlm"        DisplayName="Attitude Tlm"  Description="PST3S attitude tlm" BitOffset="0" BitLength="344" ValueType="Struct" StructName="AttitudeTlm" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sAttitude4" DisplayName="PST3S Attitude Data Port 4" Description="Get the Last Sampled PST3S Attitude Specific Data from port 4" Len="43" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+		<Item CodeName="Tlm"        DisplayName="Attitude Tlm"  Description="PST3S attitude tlm" BitOffset="0" BitLength="344" ValueType="Struct" StructName="AttitudeTlm" Iterator="" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sHousekeeping2" DisplayName="PST3S Housekeeping Data Port 2" Description="Get the Last Sampled PST3S Housekeeping related data from port 2" Len="15" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+		<Item CodeName="Tlm"        DisplayName="Housekeeping Tlm"  Description="PST3S housekeeping tlm" BitOffset="0" BitLength="120" ValueType="Struct" StructName="HousekeepingTlm" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sHousekeeping3" DisplayName="PST3S Housekeeping Data Port 3" Description="Get the Last Sampled PST3S Housekeeping related data from port 3" Len="15" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+		<Item CodeName="Tlm"        DisplayName="Housekeeping Tlm"  Description="PST3S housekeeping tlm" BitOffset="0" BitLength="120" ValueType="Struct" StructName="HousekeepingTlm" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sHousekeeping4" DisplayName="PST3S Housekeeping Data Port 4" Description="Get the Last Sampled PST3S Housekeeping related data from port 4" Len="15" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+		<Item CodeName="Tlm"        DisplayName="Housekeeping Tlm"  Description="PST3S housekeeping tlm" BitOffset="0" BitLength="120" ValueType="Struct" StructName="HousekeepingTlm" Iterator="" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sConfig2" DisplayName="PST3S Config Port 2" Description="Get the Last Sampled PST3S Config related data from port 2" Len="13" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+		<Item CodeName="Tlm"        DisplayName="Config Tlm"  Description="PST3S config tlm" BitOffset="0" BitLength="104" ValueType="Struct" StructName="ConfigTlm" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sConfig3" DisplayName="PST3S Config Port 3" Description="Get the Last Sampled PST3S Config related data from port 3" Len="13" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+		<Item CodeName="Tlm"        DisplayName="Config Tlm"  Description="PST3S config tlm" BitOffset="0" BitLength="104" ValueType="Struct" StructName="ConfigTlm" Iterator="" />
+  </Ttcs>
+  <Ttcs CanSet="false" CanGet="true" CodeName="Pst3sConfig4" DisplayName="PST3S Config Port 4" Description="Get the Last Sampled PST3S Config related data from port 4" Len="13" PartOfStartItem="0" PartOfNumItems="0" Group="StarTrackerTLM">
+		<Item CodeName="Tlm"        DisplayName="Config Tlm"  Description="PST3S config tlm" BitOffset="0" BitLength="104" ValueType="Struct" StructName="ConfigTlm" Iterator="" />
+  </Ttcs>
+
+	<!-- ****************** ENUMERATIONS ****************** -->
+
+	<!-- !!! app-specific ID's should start from the mid-point (64 TC & 192 TLM) and should increment & decrement towards the common ID's !!! -->
+
+	<!-- TC -->
+
+  <!-- TLM -->
+  <TtcIds TtcName="Pst3sTlm2"                      GetId="188" SetId="255" LogId="0" />
+  <TtcIds TtcName="Pst3sTlm3"                      GetId="198" SetId="255" LogId="0" />
+  <TtcIds TtcName="Pst3sTlm4"                      GetId="187" SetId="255" LogId="0" />
+  <TtcIds TtcName="Pst3sAttitude2"                 GetId="199" SetId="255" LogId="0" />
+  <TtcIds TtcName="Pst3sAttitude3"                 GetId="186" SetId="255" LogId="0" />
+  <TtcIds TtcName="Pst3sAttitude4"                 GetId="200" SetId="255" LogId="0" />
+  <TtcIds TtcName="Pst3sHousekeeping2"             GetId="185" SetId="255" LogId="0" />
+  <TtcIds TtcName="Pst3sHousekeeping3"             GetId="201" SetId="255" LogId="0" />
+  <TtcIds TtcName="Pst3sHousekeeping4"             GetId="184" SetId="255" LogId="0" />
+  <TtcIds TtcName="Pst3sConfig2"                   GetId="202" SetId="255" LogId="0" />
+  <TtcIds TtcName="Pst3sConfig3"                   GetId="183" SetId="255" LogId="0" />
+  <TtcIds TtcName="Pst3sConfig4"                   GetId="203" SetId="255" LogId="0" />
+
+
+   <!-- ****************** MODULES ****************** -->
+
+   <Modules>
+     <string>common-framework/common-framework-1.xml</string>
+     <string>cube-node-1/cube-node-common-1.xml</string>
+     <string>cube-node-1/control-program-pst3s-common-1.xml</string>
+   </Modules>
+
+  <!-- ****************** TYPES MODULES ****************** -->
+	<TypesModules>
+    <string>common-framework/common-framework-types-1.xml</string>
+    <string>cube-node-1/cube-node-common-types-1.xml</string>
+    <string>cube-node-1/control-program-pst3s-common-types-1.xml</string>
+	</TypesModules>
+
+</NodeDefinition>

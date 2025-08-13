@@ -1,0 +1,31 @@
+3:03:45 PM | Health check started...
+
+3:03:45 PM | Fetching GetIdentification telemetry...
+3:03:45 PM | NodeType:		NodeTypeCubeWheel
+3:03:45 PM | ProgramType:		ProgramTypeControl
+3:03:45 PM | SerialInt:		24237
+3:03:45 PM | InterfaceVersion:		3
+3:03:45 PM | FirmwareMajorVersion:	3
+3:03:45 PM | FirmwareMinorVersion:	4
+3:03:45 PM | FirmwarePatchVersion:	2
+3:03:45 PM | SystemMajorVersion:	4
+3:03:45 PM | SystemMinorVersion:	5
+3:03:45 PM | SystemPatchVersion:	0
+3:03:45 PM | HardwareMinorVersion:	3
+3:03:45 PM | RuntimeSeconds:		88
+3:03:45 PM | RuntimeMilliseconds:	85
+
+3:03:45 PM | Fetching GetSerialNumber telemetry...
+3:03:45 PM | OtpSerial:		CW24237
+3:03:45 PM | CfgSerial:		CW24237
+3:03:45 PM | NodeType:		NodeTypeCubeWheel
+3:03:45 PM | SerialInt:	24237
+3:03:45 PM | ActiveSerial:	SourceOtp
+
+3:03:45 PM | Fetching GetState telemetry...
+3:03:45 PM | Test Failed: Something went wrong. Contact CubeSpace immediately.
+3:03:45 PM | Exception occurred : System.InvalidOperationException: Test Failed: Something went wrong. Contact CubeSpace immediately.
+   at CubeSpace.Scripts.CubeMag4UserManualHealthCheck.GetStateTlm()
+   at CubeSpace.Scripts.CubeMag4UserManualHealthCheck.StateTlmTest()
+   at CubeSpace.Scripts.CubeMag4UserManualHealthCheck.RunScript()
+   at CubeSpace.Scripts.Script.Run(BackgroundWorker worker)

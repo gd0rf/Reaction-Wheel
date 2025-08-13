@@ -1,0 +1,50 @@
+11:05:22 AM | Control Program Details Before Test:
+11:05:22 AM | ___________________________________
+11:05:22 AM | >> Telemetry Response - Identification
+11:05:22 AM | >>>> NodeType = NodeTypeCubeWheel
+11:05:22 AM | >>>> ProgramType = ProgramTypeControl
+11:05:22 AM | >>>> SerialInt = 24237
+11:05:22 AM | >>>> InterfaceVersion = 3
+11:05:22 AM | >>>> FirmwareMajorVersion = 3
+11:05:22 AM | >>>> FirmwareMinorVersion = 4
+11:05:22 AM | >>>> FirmwarePatchVersion = 2
+11:05:22 AM | >>>> SystemMajorVersion = 4
+11:05:22 AM | >>>> SystemMinorVersion = 5
+11:05:22 AM | >>>> SystemPatchVersion = 0
+11:05:22 AM | >>>> HardwareMinorVersion = 3
+11:05:22 AM | >>>> RuntimeSeconds = 80
+11:05:22 AM | >>>> RuntimeMilliseconds = 352
+11:05:22 AM | ___________________________________
+11:05:22 AM | >> Telemetry Response - Version
+11:05:22 AM | >>>> FirmwareMajorVersion = 3
+11:05:22 AM | >>>> FirmwareMinorVersion = 4
+11:05:22 AM | >>>> FirmwarePatchVersion = 2
+11:05:22 AM | >>>> SystemMajorVersion = 4
+11:05:22 AM | >>>> SystemMinorVersion = 5
+11:05:22 AM | >>>> SystemPatchVersion = 0
+11:05:22 AM | >>>> GitBranch = Master
+11:05:22 AM | >>>> GitHash = 1689545425
+11:05:22 AM | >>>> BuildHash = 28008556
+11:05:22 AM | >>>> BuildTimeSeconds = 1724417132
+11:05:22 AM | >>>> HardwareMinorVersion = 3
+11:05:22 AM | ___________________________________
+11:05:22 AM | >> Telemetry Response - Serial Number
+11:05:22 AM | >>>> OtpSerial = CW24237
+11:05:22 AM | >>>> CfgSerial = CW24237
+11:05:22 AM | >>>> NodeType = NodeTypeCubeWheel
+11:05:22 AM | >>>> SerialInt = 24237
+11:05:22 AM | >>>> ActiveSerial = SourceOtp
+11:05:22 AM | ___________________________________
+11:05:22 AM | >> Telemetry Response - Boot Status
+11:05:22 AM | >>>> State = ApplicationRunning
+11:05:22 AM | >>>> ResetReason = ResetBrownOut
+11:05:22 AM | >>>> SharedParamsError = False
+11:05:22 AM | >>>> PortValidationError = False
+11:05:22 AM | >>>> PortDiscoveryError = False
+11:05:22 AM | >>>> OtpSerialError = False
+11:05:22 AM | >>>> CfgSerialError = False
+11:05:22 AM | >>>> SerialMismatchError = False
+11:05:22 AM | >>>> ConfigInvalidError = False
+11:05:22 AM | ___________________________________
+11:05:22 AM | ASSERT FAILED: NodeType != CubeComputer
+11:05:22 AM | Result: Failed!

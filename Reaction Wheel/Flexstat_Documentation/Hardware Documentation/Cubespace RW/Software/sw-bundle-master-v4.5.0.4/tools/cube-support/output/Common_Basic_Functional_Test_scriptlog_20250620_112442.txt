@@ -1,0 +1,61 @@
+11:24:42 AM | Test Script Start: Common Basic Functional Test (v1.0)
+11:24:42 AM | Selected CubeComponent: 
+11:24:42 AM | Selected Bootloader: CubeCommonBaseBootloader6
+11:24:42 AM | Selected comms interface: Serial Port - COM3
+11:24:42 AM | ...waiting 100 ms...
+11:24:42 AM | --------------------------------------------------------------------------------------------------------------------------------------
+11:24:42 AM | Runtime test
+11:24:42 AM | Verify runtime tick is working
+11:24:42 AM | 
+11:24:42 AM | Method:
+11:24:42 AM | 1. Request runtime, sleep, request runtime, confirm expected increment
+11:24:42 AM | 2. Perform soft reset, exit bootloader
+11:24:42 AM | 3. Confirm the reset by checking that the runtime reset
+11:24:42 AM | 
+11:24:42 AM | Requirements Verified:
+11:24:42 AM | N/A
+11:24:42 AM | --------------------------------------------------------------------------------------------------------------------------------------
+11:24:42 AM | ...waiting 2 s...
+11:24:44 AM | EXCEPTION Occured: System.Exception: ComponentType has not been set
+   at CubeSpace.Scripts.Script.get_Component()
+   at CubeSpace.Scripts.Script.GetRuntime()
+   at CubeSpace.Scripts.CommonBasicFunctionalTest.TestRuntime()
+   at CubeSpace.Scripts.Script.RunTestFixture(String test, String purpose, String[] method, String reqs, TestFixture testFunc)
+11:24:44 AM | --------------------------------------------------------------------------------------------------------------------------------------
+11:24:44 AM | 
+11:24:44 AM | --------------------------------------------------------------------------------------------------------------------------------------
+11:24:44 AM | Unix Time Test - Without GNSS/PPS
+11:24:44 AM | Verify unix time functionality.
+11:24:44 AM | 
+11:24:44 AM | Method:
+11:24:44 AM | 1. Set unix time to current system time
+11:24:44 AM | 2. Request unix time every second for 10s and verify that it is the same as system time (+/- 250ms)
+11:24:44 AM | 3. Reset and wait 10s for boot
+11:24:44 AM | 4. Request unix time and verify that it is the same as system time (+/- 250ms)
+11:24:44 AM | 
+11:24:44 AM | Requirements Verified:
+11:24:44 AM | TBD
+11:24:44 AM | --------------------------------------------------------------------------------------------------------------------------------------
+11:24:44 AM | EXCEPTION Occured: System.Exception: ComponentType has not been set
+   at CubeSpace.Scripts.Script.get_Component()
+   at CubeSpace.Scripts.CommonBasicFunctionalTest.UnixTimeTest()
+   at CubeSpace.Scripts.Script.RunTestFixture(String test, String purpose, String[] method, String reqs, TestFixture testFunc)
+11:24:44 AM | --------------------------------------------------------------------------------------------------------------------------------------
+11:24:44 AM | 
+11:24:44 AM | --------------------------------------------------------------------------------------------------------------------------------------
+11:24:44 AM | All TLM Test
+11:24:44 AM | Verify that all telemetry frames specified by nodedef return data, and for each field in the frame that the data is in allowed range, or enumeration values, of nodedef specification.
+11:24:44 AM | 
+11:24:44 AM | Method:
+11:24:44 AM | 1. For each telemetry specification in nodedef (also in included Module node definitions), a. request telemetry, and b. verify that each parameter is in allowed nodedef specification 
+11:24:44 AM | 
+11:24:44 AM | Requirements Verified:
+11:24:44 AM | TBD
+11:24:44 AM | --------------------------------------------------------------------------------------------------------------------------------------
+11:24:44 AM | EXCEPTION Occured: System.Exception: ComponentType has not been set
+   at CubeSpace.Scripts.Script.get_Component()
+   at CubeSpace.Scripts.CommonBasicFunctionalTest.AllTlmTest()
+   at CubeSpace.Scripts.Script.RunTestFixture(String test, String purpose, String[] method, String reqs, TestFixture testFunc)
+11:24:44 AM | --------------------------------------------------------------------------------------------------------------------------------------
+11:24:44 AM | 
+11:24:44 AM | Result: Success!
