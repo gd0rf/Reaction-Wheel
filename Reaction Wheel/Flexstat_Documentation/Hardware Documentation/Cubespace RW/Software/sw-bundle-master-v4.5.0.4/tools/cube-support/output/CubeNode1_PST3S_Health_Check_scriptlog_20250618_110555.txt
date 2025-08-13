@@ -1,4 +1,0 @@
-11:05:55 AM | Exception occurred : System.Exception: ComponentType has not been set
-   at CubeSpace.Scripts.Script.get_Component()
-   at CubeSpace.Scripts.CubeNode1Pst3sHealthCheck.RunScript()
-   at CubeSpace.Scripts.Script.Run(BackgroundWorker worker)

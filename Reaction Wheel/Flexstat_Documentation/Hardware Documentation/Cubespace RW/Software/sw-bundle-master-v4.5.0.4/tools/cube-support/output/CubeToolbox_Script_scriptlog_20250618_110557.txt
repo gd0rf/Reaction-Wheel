@@ -1,6 +1,0 @@
-11:05:57 AM | Exception occurred : System.BadImageFormatException: An attempt was made to load a program with an incorrect format. (0x8007000B)
-   at Peak.Can.Basic.PCANBasic.GetValue(UInt16 Channel, TPCANParameter Parameter, UInt32& NumericBuffer, UInt32 BufferLength)
-   at CubeSpace.Comms.PCanDriver.GetDeviceInfos()
-   at CubeSpace.Comms.CanDevices.GetDeviceInfos(Boolean refresh)
-   at CubeSpace.Scripts.CubeToolboxScript.RunScript()
-   at CubeSpace.Scripts.Script.Run(BackgroundWorker worker)

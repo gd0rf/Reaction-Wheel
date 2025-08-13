@@ -1,4 +1,0 @@
-3:53:30 PM | Test Failed: Health check incomplete.
-3:53:30 PM | Exception occurred : System.InvalidOperationException: Test Failed: Health check incomplete.
-   at CubeSpace.Scripts.CubeMag4UserManualHealthCheck.RunScript()
-   at CubeSpace.Scripts.Script.Run(BackgroundWorker worker)
