@@ -1,0 +1,5 @@
+Bootloader File: (C:\Users\tbertles\Desktop\Reaction Wheel\Flexstat_Documentation\Hardware Documentation\Cubespace RW\Software\sw-bundle-master-v4.5.0.4\docs\bootloader)
+References CRC check in Figure 3 flowchart.
+Explains in paragraph 2.7 that the bootloader is only checking file size and write address for valid parameters when told to write file.
+8 bytes before build time = Firmware info followed by System Version info (Major, Minor, Patch, Not Used)
+

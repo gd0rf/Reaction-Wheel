@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IsModule>false</IsModule>
+  <Name>cube-auriga-1-control-program-1</Name>
+  <CodeName>CubeAurigaControlProgram</CodeName>
+  <InterfaceVersion>1</InterfaceVersion>
+  <NodeTypeId>24</NodeTypeId> <!-- NodeTypeCubeAuriga(0x08) & ProgramTypeControl (0x01) ~ See NodeType/ProgramType Enums in common-framework.xml -->
+  <NodeTypeIdMask>255</NodeTypeIdMask> <!-- Match NodeType(0x0F) & ProgramType(0xF0) -->
+  <NodeTypeId2>264</NodeTypeId2> <!-- NodeTypeCubeAuriga & ProgramTypeControl ~ See NodeType/ProgramType Enums in common-framework.xml -->
+  <NodeTypeIdMask2>65535</NodeTypeIdMask2> <!-- Match NodeType(0x00FF) & ProgramType(0xFF00) -->
+  <CanLog>false</CanLog>
+
+  <!-- ****************** TC ******************* -->
+  <Ttcs CanSet="true" CanGet="false" CodeName="RtcSync" DisplayName="Rtc Sync" Description="Synchronize Auriga RTC with control interval" Len="0" PartOfStartItem="0" PartOfNumItems="0" Group=""> </Ttcs>
+
+  <!-- ****************** TLM ****************** -->
+
+  <Ttcs CanSet="true" CanGet="true" CodeName="OhPowerStates" DisplayName="OH Power States" Description="Optical Head Power States" Len="1" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="Oh1Power" DisplayName="OH1 Power" Description="First Optical Head Power State" BitOffset="0" BitLength="1" ValueType="Boolean"  />
+	<Item CodeName="Oh2Power" DisplayName="OH2 Power" Description="Second Optical Head Power State" BitOffset="1" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="Reserved" DisplayName="" Description="" BitOffset="2" BitLength="6" ValueType="Reserved" />
+  </Ttcs>
+
+  <Ttcs CanSet="true" CanGet="true" CodeName="Configuration" DisplayName="Configuration" Description="Detector and sensor configuration settings" Len="64" PartOfStartItem="0" PartOfNumItems="0" Group="">
+    <Item CodeName="OH1QRotRALRS1" DisplayName="OH1 Alignment Rot Transform Q1" Description="Rotation quaternion1 from 1st optical head's alignment frame RAL to sensor frame RS" BitOffset="0" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0"/>
+    <Item CodeName="OH1QRotRALRS2" DisplayName="OH1 Alignment Rot Transform Q2" Description="Rotation quaternion2 from 1st optical head's alignment frame RAL to sensor frame RS" BitOffset="64" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0"/>
+    <Item CodeName="OH1QRotRALRS3" DisplayName="OH1 Alignment Rot Transform Q3" Description="Rotation quaternion3 from 1st optical head's alignment frame RAL to sensor frame RS" BitOffset="128" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0"/>
+    <Item CodeName="OH1QRotRALRS4" DisplayName="OH1 Alignment Rot Transform Q4" Description="Rotation quaternion4 from 1st optical head's alignment frame RAL to sensor frame RS" BitOffset="192" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0"/>
+    <Item CodeName="OH2QRotRALRS1" DisplayName="OH2 Alignment Rot Transform Q1" Description="Rotation quaternion1 from 2nd optical head's alignment frame RAL to sensor frame RS" BitOffset="256" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0"/>
+    <Item CodeName="OH2QRotRALRS2" DisplayName="OH2 Alignment Rot Transform Q2" Description="Rotation quaternion2 from 2nd optical head's alignment frame RAL to sensor frame RS" BitOffset="320" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0"/>
+    <Item CodeName="OH2QRotRALRS3" DisplayName="OH2 Alignment Rot Transform Q3" Description="Rotation quaternion3 from 2nd optical head's alignment frame RAL to sensor frame RS" BitOffset="384" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0"/>
+    <Item CodeName="OH2QRotRALRS4" DisplayName="OH2 Alignment Rot Transform Q4" Description="Rotation quaternion4 from 2nd optical head's alignment frame RAL to sensor frame RS" BitOffset="448" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0"/>	
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="HealthTlm" DisplayName="Health Telemetry" Description="Housekeeping telemetry and error flags" Len="46" PartOfStartItem="0" PartOfNumItems="0" Group="Health">
+    <Item CodeName="McuVoltage" 	 DisplayName="MCU Voltage" 			 Description="MCU supply voltage" 		BitOffset="0" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" 			  CalibrationRawToUser="" 	MeasurementUnit="mV" RangeMin="0" RangeMax="5000" />
+	<Item CodeName="McuTemp"		 DisplayName="MCU Temperature"		 Description="MCU Temperature"          BitOffset="16"  BitLength="16" ValueType="SignedInteger"   EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="°C" RangeMin="-40" RangeMax="120" />
+    <Item CodeName="McuCurrent" 	 DisplayName="MCU Current" 			 Description="MCU current"				BitOffset="32" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="USERVAL*100.0" CalibrationRawToUser="RAWVAL*0.01" MeasurementUnit="mA" RangeMin="0" RangeMax="150.0" />
+    <Item CodeName="SramCurrent" 	 DisplayName="SRAM Current" 	 Description="SRAM current"			BitOffset="48" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="USERVAL*100.0" CalibrationRawToUser="RAWVAL*0.01" MeasurementUnit="mA" RangeMin="0" RangeMax="100.0" />
+    <Item CodeName="Oh1Current" 	 DisplayName="OH1 Current" 			 Description="OH1 Current" 		BitOffset="64" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="USERVAL*100.0" CalibrationRawToUser="RAWVAL*0.01" MeasurementUnit="mA" RangeMin="0" RangeMax="300.0" />
+	<Item CodeName="Oh2Current" 	 DisplayName="OH2 Current" 			 Description="OH2 Current" 		BitOffset="80" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="USERVAL*100.0" CalibrationRawToUser="RAWVAL*0.01" MeasurementUnit="mA" RangeMin="0" RangeMax="300.0" />
+	<Item CodeName="fpga1Current" 	 DisplayName="FPGA1 Current" 			 Description="FPGA1 Current" 		BitOffset="96" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="USERVAL*100.0" CalibrationRawToUser="RAWVAL*0.01" MeasurementUnit="mA" RangeMin="0" RangeMax="200.0" />
+	<Item CodeName="fpga2Current" 	 DisplayName="FPGA2 Current" 			 Description="FPGA2 Current" 		BitOffset="112" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="USERVAL*100.0" CalibrationRawToUser="RAWVAL*0.01" MeasurementUnit="mA" RangeMin="0" RangeMax="200.0" />
+	<Item CodeName="fpga1Voltage" 	 DisplayName="FPGA1 Voltage" 			 Description="FPGA1 Voltage" 		BitOffset="128" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" 			  CalibrationRawToUser="" 		MeasurementUnit="mV" RangeMin="0" RangeMax="5000" />
+	<Item CodeName="fpga2Voltage" 	 DisplayName="FPGA2 Voltage" 			 Description="FPGA2 Voltage" 		BitOffset="144" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" 			  CalibrationRawToUser="" 		MeasurementUnit="mV" RangeMin="0" RangeMax="5000" />
+	<Item CodeName="processIdleTiming" 	 DisplayName="Process idle delay" 	 Description="Process idle delay (idle time between consecutive processing cycles)"  BitOffset="160" BitLength="16" ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" 	 CalibrationRawToUser="" 	MeasurementUnit="ms" RangeMin="0" RangeMax="0" />
+    <Item CodeName="WatchdogCount" DisplayName="Watchdog Counters"    Description="Bitmask representing virtual watchdog region warning counters." BitOffset="176"  BitLength="40" ValueType="ByteArray"   EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="AcqSynthFlags"		DisplayName="AcqSynth Flags"	Description="STR Synthesis flags for analog acquisition"	BitOffset="216"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="STRMode"			DisplayName="Star Tracker Mode"	Description="Star Tracker Mode"	BitOffset="232"	BitLength="8"	ValueType="Enumeration" EnumerationName="AurigaLibStateVal" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="OH1Temp"			DisplayName="OH1 Temperature"	Description="OH1 Temperature"	BitOffset="240"	BitLength="16"	ValueType="SignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH2Temp"			DisplayName="OH2 Temperature"	Description="OH2 Temperature"	BitOffset="256"	BitLength="16"	ValueType="SignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="BlocksValidity"		DisplayName="Blocks Validity at Lib Init"	Description="Blocks Validity at library initialization"	BitOffset="272"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="ResetCnt"			DisplayName="Reset Count"	Description="STR hot reset counters"	BitOffset="288"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="LastTCSeqNum"		DisplayName="Last TC Sequence Nr"	Description="Sequence number (8 low bits) of the last STR TC processed"	BitOffset="296"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="TCCnt"				DisplayName="STR TC counters"	Description="STR TC counters"	BitOffset="304"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="ErrorInfo"			DisplayName="Errror Info"	Description="Number of errors since last STR cold reset and various error indicator"	BitOffset="312"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="LastErrorParam"		DisplayName="Last Error Param"	Description="Last Error Parameter"	BitOffset="320"	BitLength="32"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="LastErrorId"		DisplayName="Last Error Id"	Description="Last Error Identifier"	BitOffset="352"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="TRKLossCnt"			DisplayName="Tracking lost count"	Description="Number of loss of tracking since last STR reset"	BitOffset="360"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="AttitudeData" DisplayName="Attitude Data" Description="Estimated attitude in Quaternions" Len="36" PartOfStartItem="0" PartOfNumItems="0" Group="Attitude">
+    <Item CodeName="Oh1State" DisplayName="OH1 State"	Description="First Optical Head State"	BitOffset="0"	BitLength="8"	ValueType="Enumeration" EnumerationName="OhStateVal" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="FrameCount"	DisplayName="Frame Count"	Description="Frame count number"	BitOffset="8"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="Qbar0" DisplayName="Q0" Description="First vector component" BitOffset="24" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0" />
+    <Item CodeName="Qbar1" DisplayName="Q1" Description="Second vector component" BitOffset="88" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0" />
+    <Item CodeName="Qbar2" DisplayName="Q2" Description="Third vector component" BitOffset="152" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0" />
+    <Item CodeName="Qbar3" DisplayName="Q3" Description="Fourth vector component" BitOffset="216" BitLength="64" ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0" />
+    <Item CodeName="DataValid" DisplayName="Data Valid" Description="Data is valid" BitOffset="280" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="Reserved" DisplayName="" Description="" BitOffset="281" BitLength="7" ValueType="Reserved" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="AurigaStatus" DisplayName="Auriga Status TM" Description="Status telemetry as defined in Auriga CP Library ICD" Len="51" PartOfStartItem="0" PartOfNumItems="0" Group="Attitude">
+    <Item CodeName="FrameCount"			DisplayName="Frame Count"	Description="Frame count number"	BitOffset="0"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="IDSATM"				DisplayName="IDSATM"	Description="Sub-Address Identifier"	BitOffset="16"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="JulianDate"			DisplayName="Julian Date"	Description="Julian Date in sec since 00:00 Jan1 2000"	BitOffset="32"	BitLength="32"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="AcqSynthFlags"		DisplayName="AcqSynth Flags"	Description="STR Synthesis flags for analog acquisition"	BitOffset="64"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="STRMode"			DisplayName="Star Tracker Mode"	Description="Star Tracker Mode"	BitOffset="80"	BitLength="8"	ValueType="Enumeration" EnumerationName="AurigaLibStateVal" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH1State"			DisplayName="OH1 State"	Description="First Optical Head State"	BitOffset="88"	BitLength="8"	ValueType="Enumeration" EnumerationName="OhStateVal" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH2State"			DisplayName="OH2 State"	Description="Second Optical Head State"	BitOffset="96"	BitLength="8"	ValueType="Enumeration" EnumerationName="OhStateVal" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="BlocksValidity"		DisplayName="Blocks Validity at Lib Init"	Description="Blocks Validity at library initialization"	BitOffset="104"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="ResetCnt"			DisplayName="Reset Count"	Description="STR hot reset counters"	BitOffset="120"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="LastTCSeqNum"		DisplayName="Last TC Sequence Nr"	Description="Sequence number (8 low bits) of the last STR TC processed"	BitOffset="128"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="TCCnt"				DisplayName="STR TC counters"	Description="STR TC counters"	BitOffset="136"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="ErrorInfo"			DisplayName="Errror Info"	Description="Number of errors since last STR cold reset and various error indicator"	BitOffset="144"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="LastErrorParam"		DisplayName="Last Error Param"	Description="Last Error Parameter"	BitOffset="152"	BitLength="32"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="LastErrorId"		DisplayName="Last Error Id"	Description="Last Error Identifier"	BitOffset="184"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="TRKLossCnt"			DisplayName="Tracking lost count"	Description="Number of loss of tracking since last STR reset"	BitOffset="192"	BitLength="8"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH1SerialNumber"	DisplayName="OH1 Serial Number"	Description="OH1 Serial Number in FPGA"	BitOffset="200"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH1PartNumber"		DisplayName="OH1 Part Number"	Description="OH1 Part Number (FPGA Design version)"	BitOffset="216"	BitLength="32"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH1CalibParamId"	DisplayName="OH1 Calib Param Id"	Description="OH1 Calibration Parameter Id"	BitOffset="248"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH1AcqETR"			DisplayName="OH1 Acq ETR"	Description="OH1 Temperature Acquisition Date (ETR)"	BitOffset="264"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH1Temp"			DisplayName="OH1 Temperature"	Description="OH1 Temperature"	BitOffset="280"	BitLength="16"	ValueType="SignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH2SerialNumber"	DisplayName="OH2 Serial Number"	Description="OH2 Serial Number in FPGA"	BitOffset="296"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH2PartNumber"		DisplayName="OH2 Part Number"	Description="OH2 Part Number (FPGA Design version)"	BitOffset="312"	BitLength="32"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH2CalibParamId"	DisplayName="OH2 Calib Param Id"	Description="OH2 Calibration Parameter Id"	BitOffset="344"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH2AcqETR"			DisplayName="OH2 Acq ETR"	Description="OH2 Temperature Acquisition Date (ETR)"	BitOffset="360"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH2Temp"			DisplayName="OH2 Temperature"	Description="OH2 Temperature"	BitOffset="376"	BitLength="16"	ValueType="SignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="Delay"				DisplayName="Delay"	Description="Delay (tick) associated with current ETR"	BitOffset="392"	BitLength="16"	ValueType="SignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="AurigaAttitudeData" DisplayName="Auriga Attitude Data" Description="Attitude tracking mode telemetry as defined in Auriga CP Library ICD" Len="93" PartOfStartItem="0" PartOfNumItems="0" Group="Attitude">
+    <Item CodeName="FrameCount"		DisplayName="Frame Count"	Description="Frame count number"	BitOffset="0"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="IDSATM"			DisplayName="IDSATM"		Description="Sub-Address Identifier"	BitOffset="16"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="SpecTC"			DisplayName="SpecTC"		Description="Options of Telecommand"	BitOffset="32"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="SyntDefATM"		DisplayName="SyntDefATM"	Description="Synthesis of coherence tests results"	BitOffset="48"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="SyntFusion"		DisplayName="SyntFusion"	Description="Synthesis of fused quaternion status"	BitOffset="64"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="SyntFil"		DisplayName="SyntFil"		Description="Synthesis of available quaternions for averaging of fused quaternion"	BitOffset="80"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="DateMesFil"		DisplayName="DateMesFil"	Description="QRsFil measurement time"	BitOffset="96"	BitLength="32"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="QRsFil1"		DisplayName="QRsFil1"		Description="Filtered fused attitude quaternion1 Rs/Rc"	BitOffset="128"	BitLength="64"	ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0" />
+	<Item CodeName="QRsFil2"		DisplayName="QRsFil2"		Description="Filtered fused attitude quaternion2 Rs/Rc"	BitOffset="192"	BitLength="64"	ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0" />
+	<Item CodeName="QRsFil3"		DisplayName="QRsFil3"		Description="Filtered fused attitude quaternion3 Rs/Rc"	BitOffset="256"	BitLength="64"	ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0" />
+	<Item CodeName="QRsFil4"		DisplayName="QRsFil4"		Description="Filtered fused attitude quaternion4 Rs/Rc"	BitOffset="320"	BitLength="64"	ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="-1.0" RangeMax="1.0" />
+    <Item CodeName="IQFilXRs"		DisplayName="IQFilXRs"		Description="Quality index of the filtered attitude about XRs STR axis"	BitOffset="384"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="IQFilYRs"		DisplayName="IQFilYRs"		Description="Quality index of the filtered attitude about YRs STR axis"	BitOffset="400"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="IQFilZRs"		DisplayName="IQFilZRs"		Description="Quality index of the filtered attitude about ZRs STR axis"	BitOffset="416"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="NbEtoAtt"		DisplayName="NbEtoAtt"		Description="Number of expected stars inside STR FOV"	BitOffset="432"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="NbEtoAttOH"		DisplayName="NbEtoAttOH"	Description="Number of expected stars per OH"	BitOffset="448"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="NbEtoCoh"		DisplayName="NbEtoCoh"		Description="Number of used stars for fused attitude"	BitOffset="464"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="NbEtoCohOH"		DisplayName="NbEtoCohOH"	Description="Number of coherent stars per OH"	BitOffset="480"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="WRsFil1"		DisplayName="WRsFil1"		Description="Filtered angular rate1 in Rs"	BitOffset="496"	BitLength="32"	ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="WRsFil2"		DisplayName="WRsFil2"		Description="Filtered angular rate2 in Rs"	BitOffset="528"	BitLength="32"	ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="WRsFil3"		DisplayName="WRsFil3"		Description="Filtered angular rate3 in Rs"	BitOffset="560"	BitLength="32"	ValueType="FloatingPoint" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="rad/s" RangeMin="-2.0" RangeMax="2.0" />
+	<Item CodeName="NLPMoyOH1"		DisplayName="NLPMoyOH1"		Description="Mean level of stray-light for OH1"	BitOffset="592"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="NLPMoyOH2"		DisplayName="NLPMoyOH2"		Description="Mean level of stray-light for OH2"	BitOffset="608"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="SyntFilOH1"		DisplayName="SyntFilOH1"	Description="Synthesis of available quaternions for averaging of OH1 quaternion"	BitOffset="624"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="SyntFilOH2"		DisplayName="SyntFilOH2"	Description="Synthesis of available quaternions for averaging of OH2 quaternion"	BitOffset="640"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="SyntFDIROH1"	DisplayName="SyntFDIROH1"	Description="Synthesis of FDIR actions for OH1"	BitOffset="656"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="SyntFDIROH2"	DisplayName="SyntFDIROH2"	Description="Synthesis of FDIR actions for OH2"	BitOffset="672"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="SyntDesOH1"		DisplayName="SyntDesOH1"	Description="Synthesis of OH1 designation"	BitOffset="688"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+	<Item CodeName="SyntDesOH2"		DisplayName="SyntDesOH2"	Description="Synthesis of OH2 designation"	BitOffset="704"	BitLength="16"	ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH1State"			DisplayName="OH1 State"	Description="First Optical Head State"	BitOffset="720"	BitLength="8"	ValueType="Enumeration" EnumerationName="OhStateVal" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OH2State"			DisplayName="OH2 State"	Description="Second Optical Head State"	BitOffset="728"	BitLength="8"	ValueType="Enumeration" EnumerationName="OhStateVal" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="DataValid" DisplayName="Data Valid" Description="Data is valid" BitOffset="736" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="Reserved" DisplayName="" Description="" BitOffset="737" BitLength="7" ValueType="Reserved" />
+  </Ttcs>
+
+  <Ttcs CanSet="true" CanGet="false" CodeName="AurigaSelfTest" DisplayName="Trigger Auriga OH Self Test" Description="Perform self-test on all active optical heads" Len="4" PartOfStartItem="0" PartOfNumItems="0" Group="Health">
+	  <Item CodeName="magicNumber"	DisplayName="Magic Number"	Description="Must be correct to trigger self-test"	BitOffset="0"		BitLength="32"	ValueType="UnsignedInteger" EnumerationName="" />
+  </Ttcs>
+
+  <Ttcs CanSet="true" CanGet="false" CodeName="ExtMemTest" DisplayName="Trigger External SRAM Test" Description="Perform test on eternal SRAM" Len="4" PartOfStartItem="0" PartOfNumItems="0" Group="Health">
+	  <Item CodeName="magicNumber"	DisplayName="Magic Number"	Description="Must be correct to trigger SRAM test"	BitOffset="0"		BitLength="32"	ValueType="UnsignedInteger" EnumerationName="" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="AurigaSelfTestResults" DisplayName="Auriga OH Self Test Results" Description="Result of self-test of optical heads" Len="3" PartOfStartItem="0" PartOfNumItems="0" Group="Health">
+    <Item CodeName="OH1AAMNbRefStarsCriteria" DisplayName="OH1AAMNbRefStarsCriteria" Description="AAMNbRefStarsCriteria" BitOffset="0" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="OH1AAMQuaternionCriteria" DisplayName="OH1AAMQuaternionCriteria" Description="AAMNbRefStarsCriteria" BitOffset="1" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="OH1AAM_ATMTransitionCriteria" DisplayName="OH1AAM_ATMTransitionCriteria" Description="AAMNbRefStarsCriteria" BitOffset="2" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="OH1ATMNbCoherentStarsCriteria" DisplayName="OH1ATMNbCoherentStarsCriteria" Description="AAMNbRefStarsCriteria" BitOffset="3" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="OH1ATMQuaternionCriteria" DisplayName="OH1ATMQuaternionCriteria" Description="AAMNbRefStarsCriteria" BitOffset="4" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="Reserved" DisplayName="" Description="" BitOffset="5" BitLength="3" ValueType="Reserved" />
+    <Item CodeName="OH2AAMNbRefStarsCriteria" DisplayName="OH2AAMNbRefStarsCriteria" Description="AAMNbRefStarsCriteria" BitOffset="8" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="OH2AAMQuaternionCriteria" DisplayName="OH2AAMQuaternionCriteria" Description="AAMNbRefStarsCriteria" BitOffset="9" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="OH2AAM_ATMTransitionCriteria" DisplayName="OH2AAM_ATMTransitionCriteria" Description="AAMNbRefStarsCriteria" BitOffset="10" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="OH2ATMNbCoherentStarsCriteria" DisplayName="OH2ATMNbCoherentStarsCriteria" Description="AAMNbRefStarsCriteria" BitOffset="11" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="OH2ATMQuaternionCriteria" DisplayName="OH2ATMQuaternionCriteria" Description="AAMNbRefStarsCriteria" BitOffset="12" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="Reserved" DisplayName="" Description="" BitOffset="13" BitLength="3" ValueType="Reserved" />
+    <Item CodeName="TestState" DisplayName="Self-test State" Description="Self-test State" BitOffset="16" BitLength="8" ValueType="Enumeration" EnumerationName="TestStateVal" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="ExtMemTestResult" DisplayName="SRAM Test Result" Description="Result of SRAM Test Result" Len="2" PartOfStartItem="0" PartOfNumItems="0" Group="Health">
+    <Item CodeName="TestResult" DisplayName="SRAM Test Result" Description="SRAM Test Result" BitOffset="0" BitLength="1" ValueType="Boolean"  />
+    <Item CodeName="Reserved" DisplayName="" Description="" BitOffset="1" BitLength="7" ValueType="Reserved" />
+    <Item CodeName="TestState" DisplayName="SRAM Test State" Description="SRAM Test State" BitOffset="8" BitLength="8" ValueType="Enumeration" EnumerationName="TestStateVal" CalibrationUserToRaw=""	CalibrationRawToUser=""	MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+
+  <Enum>
+    <CodeName>AurigaLibStateVal</CodeName>
+    <EnumValue NumericalValue="0" CodeName="Initialization" DisplayName="Initialization" Description="Initialization" />
+	<EnumValue NumericalValue="1" CodeName="Standby" DisplayName="Standby Mode" Description="Standby Mode" />
+	<EnumValue NumericalValue="2" CodeName="Selftest" DisplayName="Self-test Mode" Description="Self-test Mode" />
+	<EnumValue NumericalValue="3" CodeName="PhotoMode" DisplayName="Photo Mode" Description="Photo Mode" />
+	<EnumValue NumericalValue="4" CodeName="Tracking" DisplayName="Tracking" Description="Tracking" />
+	<EnumValue NumericalValue="5" CodeName="ArmMode" DisplayName="Angular Rate Mode" Description="Angular Rate Mode" />
+	<EnumValue NumericalValue="6" CodeName="AamMode" DisplayName="Attitude Acquisition Mode" Description="Attitude Acquisition Mode" />
+	<EnumValue NumericalValue="7" CodeName="AtmMode" DisplayName="Attitude Tracking Mode" Description="Attitude Tracking Mode" />
+  </Enum>
+
+  <Enum>
+    <CodeName>OhStateVal</CodeName>
+    <EnumValue NumericalValue="0" CodeName="OhStateOff" DisplayName="State Off" Description="Optical head switched off" />
+	<EnumValue NumericalValue="1" CodeName="OhStateWaitOn" DisplayName="Wait On" Description="Wait On" />
+	<EnumValue NumericalValue="2" CodeName="OhStateInitTempo" DisplayName="Init Tempo" Description="Init Tempo" />
+	<EnumValue NumericalValue="3" CodeName="OhStateCheck" DisplayName="Check" Description="Check" />
+	<EnumValue NumericalValue="4" CodeName="OhStateConfig" DisplayName="Config" Description="Config" />
+	<EnumValue NumericalValue="5" CodeName="OhStateStandby" DisplayName="Standby" Description="Standby" />
+	<EnumValue NumericalValue="6" CodeName="OhStateAcqFF" DisplayName="Acquire FF" Description="Acquire FF" />
+	<EnumValue NumericalValue="7" CodeName="OhStateAcqHW" DisplayName="Acquire HW" Description="Acquire HW" />
+	<EnumValue NumericalValue="8" CodeName="OhStateFirstTrack" DisplayName="First Track" Description="First Track" />
+	<EnumValue NumericalValue="9" CodeName="OhStateTracking" DisplayName="Tracking" Description="Tracking" />
+	<EnumValue NumericalValue="16" CodeName="OhStateOffRequest" DisplayName="Error State Off Request" Description="Error State Off Request" />
+  </Enum>
+
+  <Enum>
+    <CodeName>TestStateVal</CodeName>
+    <EnumValue NumericalValue="0" CodeName="Idle" DisplayName="Self-test Ready" Description="Standby Mode" />
+	  <EnumValue NumericalValue="1" CodeName="Busy" DisplayName="Self-test Busy" Description="Busy Mode" />
+	</Enum>
+
+  <!-- TC -->
+
+  <TtcIds TtcName="OhPowerStates" GetId="255" SetId="64" LogId="0" />
+  <TtcIds TtcName="RtcSync" GetId="255" SetId="65" LogId="0" />
+  <TtcIds TtcName="Configuration" GetId="255" SetId="66" LogId="0" />
+  <TtcIds TtcName="AurigaSelfTest" GetId="255" SetId="67" LogId="0" />
+  <TtcIds TtcName="ExtMemTest" GetId="255" SetId="68" LogId="0" />
+
+  <!-- TLM -->
+
+  <TtcIds TtcName="OhPowerStates" GetId="192" SetId="255" LogId="0" />
+  <TtcIds TtcName="HealthTlm" GetId="191" SetId="255" LogId="0" />
+  <TtcIds TtcName="AttitudeData" GetId="190" SetId="255" LogId="0" />
+  <TtcIds TtcName="AurigaStatus" GetId="189" SetId="255" LogId="0" />
+  <TtcIds TtcName="AurigaAttitudeData" GetId="188" SetId="255" LogId="0" />
+  <TtcIds TtcName="Configuration" GetId="187" SetId="255" LogId="0" />
+  <TtcIds TtcName="AurigaSelfTestResults" GetId="186" SetId="255" LogId="0" />
+  <TtcIds TtcName="ExtMemTestResult" GetId="185" SetId="255" LogId="0" />
+
+ <!-- ****************** MODULES ****************** -->
+  <Modules>
+    <string>common-framework/common-framework-1.xml</string>
+    <string>common-transfer/common-transfer-1.xml</string>
+  </Modules>
+
+  <!-- ****************** GLOBAL ENUMS ****************** -->
+  <TypesModules>
+    <string>common-framework/common-framework-types-1.xml</string>
+  </TypesModules>
+
+  <!-- ****************** END ****************** -->
+
+</NodeDefinition>
+

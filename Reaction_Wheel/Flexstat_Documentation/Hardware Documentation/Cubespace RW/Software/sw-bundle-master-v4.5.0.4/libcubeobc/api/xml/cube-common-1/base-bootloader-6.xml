@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IsModule>false</IsModule>
+  <Name>cube-common-base-bootloader-6</Name>
+  <CodeName>CubeCommonBaseBootloader</CodeName>
+  <InterfaceVersion>6</InterfaceVersion>
+  <NodeTypeId>64</NodeTypeId> <!-- NodeTypeInvalid & ProgramTypeBootloader ~ See NodeType/ProgramType Enums in common-framework.xml -->
+  <NodeTypeIdMask>240</NodeTypeIdMask> <!-- Match ProgramType(Mask 0xF0) (Still using legacy identification) -->
+  <CanLog>false</CanLog>
+
+  <Inherit>
+    <CodeName>CubeCommonBaseBootloader</CodeName>
+    <InterfaceVersion>5</InterfaceVersion>
+    <NodeDefRelativePath>cube-common-1/base-bootloader-5.xml</NodeDefRelativePath>
+  </Inherit>
+
+  <Ttcs CanSet="false" CanGet="true" CodeName="Warnings" DisplayName="Warnings (CubeComputer only)" Description="Warning information of the application (CubeComputer only)" Len="7" PartOfStartItem="0" PartOfNumItems="0" Group="State">
+    <Item CodeName="RedBinRunning"        DisplayName="Redundant Bin Running"     Description="The redundant binary is currently running. This implies that the primary binary is corrupt.
+                                                                                               If this flag is set, a bootloader upgrade should be performed to recover the primary binary.
+                                                                                               The user must inspect the flags of this telemetry to identify the type of corruption.
+                                                                                               If this flag is set, the bootloader will not automatically jump to the control program at the end of backoff.
+                                                                                               The user will need to command the jump manually. This scheme is implemented to enforce user intervention in the case of flash corruption"      BitOffset="0"   BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="RedBinIntLock"        DisplayName="Redundant Bin Int Lock"    Description="This flag is only valid if the redundant binary is running (RedBinRunning=TRUE).
+                                                                                               If this flag is FALSE, the redundant binary was jumped to after a reset.
+                                                                                               In this scenario, the redundant bootloader functions as normal and can be upgraded, and the control program can be executed.
+                                                                                               If this flag is TRUE, the redundant binary was jumped to from an interrupt handler.
+                                                                                               In this scenario, the redundant bootloader functions as normal and can be upgraded, but the control program cannot be executed.
+                                                                                               Any attempt to execute the control program will result in an ASSERT reset.
+                                                                                               This happens because when the redundant bootloader is jumped to from an interrupt handler,
+                                                                                               the MCU thinks it is still running in an interrupt context, and so the RTOS used by the control program cannot function.
+                                                                                               Note that for this flag to be TRUE, a very specific area of the primary binary flash must be corrupt (PriBinEccd flag).
+                                                                                               Therefore, it is very unlikely, however it is implemented so that there is a solution to flash corruption anywhere within the primary binary." BitOffset="1"  BitLength="1"   ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="PriBinCrc"            DisplayName="Primary Bin CRC"           Description="The primary binary has failed CRC validation and is deemed corrupt.
+                                                                                               The flash itself is not corrupt and can be read, but the CRC validation failed.
+                                                                                               If this flag is set, the redundant binary should be running (check the RedBinRunning flag).
+                                                                                               If this flag is set, a bootloader upgrade should be performed to recover the primary binary.
+                                                                                               If the bootloader is not upgraded, and the redundant binary also becomes corrupt, the bootloader will enter a boot loop cycle.
+                                                                                               If this flag is set, the bootloader will not automatically jump to the control program at the end of backoff.
+                                                                                               The user will need to command the jump manually. This scheme is implemented to enforce user intervention in the case of flash corruption"      BitOffset="2"   BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="PriBinEccd"           DisplayName="Primary Bin ECCD"          Description="The primary binary flash region has experienced multiple ECC errors and cannot be automatically corrected, and is corrupt.
+                                                                                               Multiple ECC errors means that the flash region can no longer be read and therefore cannot be executed reliably.
+                                                                                               If this flag is set, the redundant binary should be running (check the RedBinRunning flag).
+                                                                                               If this flag is set, a bootloader upgrade should be performed to recover the primary binary.
+                                                                                               If the bootloader is not upgraded, and the redundant binary also becomes corrupt, the bootloader will enter a boot loop cycle.
+                                                                                               If this flag is set, the bootloader will not automatically jump to the control program at the end of backoff.
+                                                                                               The user will need to command the jump manually. This scheme is implemented to enforce user intervention in the case of flash corruption"      BitOffset="3"   BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="PriBinEccc"           DisplayName="Primary Bin ECCC"          Description="The primary binary flash region has experienced a single ECC error.
+                                                                                               The error is automatically corrected and normal operation continues"                                                                           BitOffset="4"   BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="RedBinCrc"            DisplayName="Redundant Bin CRC"         Description="The redundant binary has failed CRC validation and is deemed corrupt.
+                                                                                               The flash itself is not corrupt and can be read, but the CRC validation failed.
+                                                                                               If this flag is set, a bootloader upgrade should be performed to recover the redundant binary.
+                                                                                               If the bootloader is not upgraded, and the primary binary also becomes corrupt, the bootloader will enter a boot loop cycle.
+                                                                                               If this flag is set, the bootloader will not automatically jump to the control program at the end of backoff.
+                                                                                               The user will need to command the jump manually. This scheme is implemented to enforce user intervention in the case of flash corruption"      BitOffset="5"   BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="RedBinEccd"           DisplayName="Redundant Bin ECCD"        Description="The Redundant binary flash region has experienced multiple ECC errors and cannot be automatically corrected, and is corrupt.
+                                                                                               Multiple ECC errors means that the flash region can no longer be read and therefore cannot be executed reliably.
+                                                                                               If this flag is set, a bootloader upgrade should be performed to recover the redundant binary.
+                                                                                               If the bootloader is not upgraded, and the primary binary also becomes corrupt, the bootloader will enter a boot loop cycle.
+                                                                                               If this flag is set, the bootloader will not automatically jump to the control program at the end of backoff.
+                                                                                               The user will need to command the jump manually. This scheme is implemented to enforce user intervention in the case of flash corruption"      BitOffset="6"   BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="RedBinEccc"           DisplayName="Redundant Bin ECCC"        Description="The Redundant binary flash region has experienced a single ECC error.
+                                                                                               The error is automatically corrected and normal operation continues"                                                                           BitOffset="7"   BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="PriCfgCrc"            DisplayName="Primary Cfg Crc"           Description="The primary config has failed CRC validation and is deemed corrupt.
+                                                                                               The flash itself is not corrupt and can be read, but the CRC validation failed.
+                                                                                               If the redundant config is not corrupt, the redundant config is being used.
+                                                                                               If the redundant config is also corrupt, the default config is being used.
+                                                                                               The user should set the config manually too attempt to write both the primary and redundant to flash.
+                                                                                               If this flag is set, the bootloader will not automatically jump to the control program at the end of backoff.
+                                                                                               The user will need to command the jump manually. This scheme is implemented to enforce user intervention in the case of flash corruption"      BitOffset="8"   BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="PriCfgEccd"           DisplayName="Primary Cfg ECCD"          Description="The primary config has experienced multiple ECC errors and cannot be automatically corrected, and is corrupt.
+                                                                                               Multiple ECC errors means that the flash region can no longer be read.
+                                                                                               If the redundant config is not corrupt, the redundant config is being used.
+                                                                                               If the redundant config is also corrupt, the default config is being used.
+                                                                                               The user should set the config manually too attempt to write both the primary and redundant to flash.
+                                                                                               If this flag is set, the bootloader will not automatically jump to the control program at the end of backoff.
+                                                                                               The user will need to command the jump manually. This scheme is implemented to enforce user intervention in the case of flash corruption"      BitOffset="9"   BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="PriCfgEccc"           DisplayName="Primary Cfg ECCC"          Description="The primary config flash region has experienced a single ECC error. The error is automatically corrected and normal operation continues"       BitOffset="10"  BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="RedCfgCrc"            DisplayName="Redundant Cfg Crc"         Description="The redundant config has failed CRC validation and is deemed corrupt.
+                                                                                               The flash itself is not corrupt and can be read, but the CRC validation failed.
+                                                                                               If the primary config is not corrupt, the primary config is being used.
+                                                                                               If the primary config is also corrupt, the default config is being used.
+                                                                                               The user should set the config manually too attempt to write both the primary and redundant to flash.
+                                                                                               If this flag is set, the bootloader will not automatically jump to the control program at the end of backoff.
+                                                                                               The user will need to command the jump manually. This scheme is implemented to enforce user intervention in the case of flash corruption"      BitOffset="11"  BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="RedCfgEccd"           DisplayName="Redundant Cfg ECCD"        Description="The redundant config has experienced multiple ECC errors and cannot be automatically corrected, and is corrupt.
+                                                                                               Multiple ECC errors means that the flash region can no longer be read.
+                                                                                               If the primary config is not corrupt, the primary config is being used.
+                                                                                               If the primary config is also corrupt, the default config is being used.
+                                                                                               The user should set the config manually too attempt to write both the primary and redundant to flash.
+                                                                                               If this flag is set, the bootloader will not automatically jump to the control program at the end of backoff.
+                                                                                               The user will need to command the jump manually. This scheme is implemented to enforce user intervention in the case of flash corruption"      BitOffset="12"  BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="RedCfgEccc"           DisplayName="Redundant Cfg ECCC"        Description="The redundant config flash region has experienced a single ECC error. The error is automatically corrected and normal operation continues"     BitOffset="13"  BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />    
+    <Item CodeName="FileTabEccd"          DisplayName="File Table ECCD"           Description="The file table flash region has experienced multiple ECC errors and cannot be automatically corrected, and is corrupt.
+                                                                                               Multiple ECC errors means that the flash region can no longer be read.
+                                                                                               The flash page is automatically erased, therefore control program files will need to be uploaded again to populate the file table.
+                                                                                               Note that the file data still exists in flash, and could be executed using the JumpToAddress command"                                          BitOffset="14"  BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />    
+    <Item CodeName="FileTabEccc"          DisplayName="File Table ECCC"           Description="The file table flash region has experienced a single ECC error. The error is automatically corrected and normal operation continues"           BitOffset="15"  BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />    
+    <Item CodeName="OtherEccd"            DisplayName="Other ECCD"                Description="A flash region not explicitly known to the bootloader (possibly the control program),
+                                                                                               has experienced multiple ECC errors and cannot be automatically corrected, and has become corrupt.
+                                                                                               Multiple ECC errors means that the flash region can no longer be read.
+                                                                                               The page address of the error is automatically erased. The address of the error is stored in AddrEcc"                                          BitOffset="16"  BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="OtherEccc"            DisplayName="Other ECCC"                Description="A region not explicitly known to the bootloader (possibly the control program) has experianced a single ECC error.
+                                                                                               The error is automatically corrected and normal operation continues. The address of the error is stored in AddrEcc"                            BitOffset="17"  BitLength="1"   ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="EraseEccd"            DisplayName="Erase ECCD"                Description="Attempt to erase the corrupt flash page failed.
+                                                                                               When any flash region, outside of the bootloader itself, experiences multiple ECC errors (ECCD),
+                                                                                               The page is automatically erased. This flag indicates if that erase operation failed.
+                                                                                               The address of the error is stored in AddrEcc"                                                                                                 BitOffset="18"  BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />    
+    <Item CodeName="CfgPartInv"           DisplayName="Config Partially Invalid"  Description="The config being used passed CRC validation but at least one parameter is out-of-bounds.
+                                                                                               The config being used is either primary or redundant, and is decided prior to this check.
+                                                                                               The check for out out-of-bounds parameters is only done after a valid config is chosen,
+                                                                                               because, for example, if the primary config has an out-of-bounds parameter and passes CRC validation,
+                                                                                               it is likely that the redundant config will have the same parameter,
+                                                                                               and we don't want one out-of-bounds parameter to cause the bootloader to entirely revert to the default config.
+                                                                                               We rather only revert the specific out-of-bounds parameters to the defaults, and hope the important/used parameters are correct.
+                                                                                               The same parameter out-of-bounds checks are performed when the user sets the config,
+                                                                                               therefore it is unlikely that this flag will be set."                                                                                          BitOffset="19"  BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="RedCfgWrite"          DisplayName="Redundant Cfg Write"       Description="Failed to write the redundant config to flash after the primary config was successfully written.
+                                                                                               The redundant config is only written to flash if the primary config was successfully written to flash.
+                                                                                               It is done this way because if the primary config write fails, we do not want to erase the redundant config,
+                                                                                               because if the redundant config write also fails, but is erased, the bootloader would revert to the default config on next boot"               BitOffset="20"  BitLength="1"  ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />    
+    <Item CodeName="Reserved"             DisplayName=""                          Description=""                                                                                                                                              BitOffset="21"  BitLength="3"   ValueType="Reserved" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="AddrEcc"              DisplayName="Address ECC"               Description="Address of last ECC error (ECCC or ECCD).
+                                                                                               This is an absolute address and does not cater for memory remapping.
+                                                                                               i.e. If booting from bank2 (BFB2=1), this address will still show the error location as if BFB2=0"                                             BitOffset="24"  BitLength="32"  ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+
+  <Ttcs CanSet="true" CanGet="false" CodeName="EccSim" DisplayName="Simulate ECC Error" Description="Simulate an ECC correction/error" Len="9" PartOfStartItem="0" PartOfNumItems="0" Group="ECCSIM">
+    <Item CodeName="MagicNumber"      DisplayName="Magic Number"    Description="Magic number to allow action"                                                                                                          BitOffset="0"   BitLength="32"  ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="Addr"             DisplayName="ADDR_ECC"        Description="The offset within the specified bank that the error occured at"                                                                        BitOffset="32"  BitLength="32"  ValueType="UnsignedInteger" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="Bank"             DisplayName="BK_ECC"          Description="The flash bank the error occured in (0=bank1, 1=bank2)"                                                                                BitOffset="64"  BitLength="1"   ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="Eccd"             DisplayName="ECCD"            Description="Double ECC error"                                                                                                                      BitOffset="65"  BitLength="1"   ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="Eccc"             DisplayName="ECCC"            Description="Single ECC error"                                                                                                                      BitOffset="66"  BitLength="1"   ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+    <Item CodeName="BootIncomplete"   DisplayName="Boot Incomplete" Description="If a double ECC error occurs in the primary image,
+                                                                                 the action taken depends on this flag.
+                                                                                 If this flag is FALSE, an ECC error will result in a reset and then immediate jump to the redundant image.
+                                                                                 If this flag is TRUE, it means the reset approach is not possible because the code to jump to the redundant image is unreachable,
+                                                                                 therefore we jump to the redundant image in the interrupt handler;
+                                                                                 this type of jump has consequences, as the MCU thinks that the interrupt handler never returned;
+                                                                                 mitigations have been put in place such that if this does occur during normal operation,
+                                                                                 both the redundant bootloader and the control program can still execute."                                                              BitOffset="67"  BitLength="1"   ValueType="Boolean" EnumerationName="" CalibrationUserToRaw="" CalibrationRawToUser="" MeasurementUnit="" RangeMin="0" RangeMax="0" />
+  </Ttcs>
+
+  <!-- ****************** ENUMERATIONS ****************** -->
+
+  <!-- Specific TC -->
+  <TtcIds TtcName="EccSim"                     GetId="255" SetId="127" LogId="0" />
+
+  <!-- Specific TLM -->
+  <TtcIds TtcName="Warnings"                   GetId="140" SetId="255" LogId="0" />
+
+  <!-- ****************** MODULES ****************** -->
+
+  <!-- ****************** TYPES MODULES ****************** -->
+
+</NodeDefinition>
